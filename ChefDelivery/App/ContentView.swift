@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-            NavigationBarView()
+                NavigationBarView()
                     .padding(.horizontal, 15)
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 20) {
