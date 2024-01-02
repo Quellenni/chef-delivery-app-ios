@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    //MARK: - Atributes
+    
+    private var service = HomeService()
+    
+    //MARK: - View
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
@@ -23,7 +29,14 @@ struct ContentView: View {
                
             }
         }
+        .onAppear {
+            service.fetchData()
+        }
     }
+    
+    // MARK: - Methods
+    
+   
 }
 
 struct ContentView_Previews: PreviewProvider {
