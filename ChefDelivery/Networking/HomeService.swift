@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum RequestError: Error {
     case invalidURL
@@ -42,5 +43,17 @@ struct HomeService {
         let message = try JSONSerialization.jsonObject(with: data) as? [String: Any]
         
         return.success(message)
+    }
+    
+    func fetchDataWthAlamofire(completion: @escaping([StoreType]?, Error?) -> Void) {
+        AF.request("https://private-e3f50-quellenni.apiary-mock.com/home").responseDecodable(of: [StoreType].self) { response in
+            switch response.result {
+            case .success(let stores):
+                completion(stores,nil)
+           
+            default: break
+            }
+            
+        }
     }
 }
